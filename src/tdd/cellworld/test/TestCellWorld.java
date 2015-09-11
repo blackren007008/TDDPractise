@@ -87,6 +87,13 @@ public class TestCellWorld {
 		thenDisplayWorldStory3_AC3();
 	}
 	
+	@Test
+	public void testStory3_AC4()throws Exception{
+		givenWorldBoundStory3_AC4();
+		whenBuildWorldStory3_AC4();
+		thenDisplayWorldStory3_AC4();
+	}
+	
 	private void givenWorldBoundStory1_AC1(){
 		cw.setSize(4, 5);
 	}
@@ -213,5 +220,37 @@ public class TestCellWorld {
 
 	private void thenDisplayWorldStory3_AC3(){
 		assertEquals(".*.\n.**\n...\n",cw.printCellWorld());
+	}
+	
+	/**
+	 * Input
+	 *  **.
+	 *  .*.
+	 *  *.*
+	 *  
+	 * Expect
+	 *  **.
+	 *  ...
+	 *  ...
+	 */
+	private void givenWorldBoundStory3_AC4(){
+		cw.setSize(3, 3);
+	}
+	
+	private void whenBuildWorldStory3_AC4() throws Exception{
+		ValuePair cell1 = new ValuePair(0,0);
+		ValuePair cell2 = new ValuePair(0,1);
+		ValuePair cell3 = new ValuePair(1,1);
+		ValuePair cell4 = new ValuePair(2,0);
+		ValuePair cell5 = new ValuePair(2,2);
+		cw.addLiveCell(cell1);
+		cw.addLiveCell(cell2);
+		cw.addLiveCell(cell3);
+		cw.addLiveCell(cell4);
+		cw.addLiveCell(cell5);
+	}
+
+	private void thenDisplayWorldStory3_AC4(){
+		assertEquals("**.\n...\n...\n",cw.printCellWorld());
 	}
 }
